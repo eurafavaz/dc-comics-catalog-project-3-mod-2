@@ -52,13 +52,13 @@ app.post("/create", (req, res) => {
   const character = req.body;
   character.id = characters.lenght + 1;
   characters.push(character);
-  res.redirect("/");
+  res.redirect("/#cards");
 });
 
 app.get("/details/:id", (req, res) => {
   const id = +req.params.id;
   character = characters.find((character) => character.id === id);
-  res.redirect("/");
+  res.redirect("/#register");
 });
 
 app.post("/update/:id", (req, res) => {
@@ -67,8 +67,14 @@ app.post("/update/:id", (req, res) => {
   newCharacter.id = id + 1;
   characters[id] = newCharacter;
   character = undefined;
-  res.redirect("/");
+  res.redirect("/#cards");
 });
+
+app.get("/delete/:id", (req, res) => {
+	const id = +req.params.id - 1;
+	delete characters[id];
+	res.redirect("/#cards");
+  });
 
 app.listen(3000, () =>
   console.log("Servidor rodando em http://localhost:3000")

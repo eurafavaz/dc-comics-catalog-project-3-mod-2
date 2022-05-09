@@ -4,17 +4,45 @@
     margin: 0;
     padding: 0;
     font-family: Source Sans Pro;
+	scroll-behavior:smooth;
 }
 
-header {
-	padding: 2rem;
+nav {
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
 	background-color: #0282F9;
 }
 
-header h1 {
+nav img {
+	width: 3rem;
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	align-items: center;
+}
+
+nav ul li {
+	padding: .6rem;
+}
+
+nav h1 {
 	color: #ffffff;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	text-align: center;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 1rem;
+}
+
+header img {
+	margin-top: 3.5rem;
+	width: 100%;
 }
 
 main {
@@ -59,7 +87,7 @@ section#cards div.card p.description {
 	margin-top: 1rem;
 }
 
-section#cards div.card a {
+section#cards div.card a#edit {
 	padding: .8rem;
 	display: flex;
 	justify-content: center;
@@ -75,10 +103,32 @@ section#cards div.card a {
 	margin-top: 1.5rem;
 }
 
-section#cards div.card a:hover {
+section#cards div.card a#delete {
+	padding: .8rem;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	border-radius: 30px;
+	font-size: 1rem;
+	background-color: #ffffff;
+	border: solid 1px rgb(172, 10, 10);
+	color: rgb(172, 10, 10);
+	cursor: pointer;
+	transition: all .2s ease-in-out;
+	text-decoration: none;
+	margin-top: 1.5rem;
+}
+
+section#cards div.card a#edit:hover {
 	background-color: #0282F9;
 	color: rgb(255, 255, 255);
 	border: solid 1px #0282F9;
+}
+
+section#cards div.card a#delete:hover {
+	background-color: rgb(172, 10, 10);
+	color: rgb(255, 255, 255);
+	border: solid 1px rgb(172, 10, 10);
 }
 
 section#cards div.card p.alias {
@@ -156,5 +206,20 @@ section#register form button:hover {
 	border: solid 1px #0282F9;
 }
 
-
-
+footer {
+	background-color: #0282F9;
+	padding: 4rem;
+	text-align: center;
+	color: #fff;
+	font-size: 1rem;
+	margin-top: 5rem;
+  }
+  
+  footer a {
+	text-decoration: none;
+	color: #fff;
+  }
+  
+  footer a:hover{
+	color: #19181D;
+  }

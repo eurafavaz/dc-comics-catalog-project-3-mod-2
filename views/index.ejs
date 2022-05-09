@@ -9,8 +9,21 @@
 </head>
 <body>
 
+    <nav>
+        <ul>
+            <li>
+                <a href="/">
+                    <img src="/img/dc-white-logo.png" alt="DC White Logo">
+                </a>
+            </li>
+            <li><h1>DC Comics Characters</h1></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#cards">Characters</a></li>
+        </ul>
+    </nav>
+
     <header>
-	<h1>DC Comics Characters</h1>
+        <img src="/img/banner.jpg" alt="banner">
     </header>
 
     <main>
@@ -70,7 +83,7 @@
                 </form>
                 <% } %>
             </div>
-            
+
         </section>
 
         <section id="cards">
@@ -85,13 +98,21 @@
                     <p class="alias"><%= character.alias %></p>
                     <p><%= character.powers %></p>
                     <p class="description"><%= character.description %></p>
-                    <a href="/details/<%= character.id %>">Edit</a>
+                    <a id="edit" href="/details/<%= character.id %>">Edit</a>
+                    <a id="delete" href="/delete/<%= character.id %>">Delete</a>
                 </div>
             <% }) %>
         
         </section>
 
     </main>
+
+    <footer>
+        <p>
+            <a href="https://github.com/eurafavaz" target="_blank"> Created by Rafael Vaz </a>
+            - All Rights Reserved (DC Comics) &copy;
+        </p>
+    </footer>
 
 </body>
 </html>
