@@ -14,46 +14,81 @@
     </header>
 
     <main>
-        <section id="cards">
-
-            <% characters.forEach((character) => { %>
-                <div class="card">
-                    <img src="<%= character.image %>" alt="">
-                    <h2><%= character.name %></h2>
-                    <p class="alias"><%= character.alias %></p>
-                    <p><%= character.powers %></p>
-                    <p class="description"><%= character.description %></p>
-                </div>
-            <% }) %>
-        
-        </section>
 
         <section id="register">
 
-            <h2>Register a new super hero!</h2>
+            <img src="/img/dc_comics-logo.png" alt="DC Logo">
 
-            <form action="/add" method="POST">
+            <div>
+                <% if (character == undefined) { %>
 
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <h2>Register a new super hero!</h2>
 
-                <label for="alias">Alias:</label>
-                <input type="text" id="alias" name="alias">
+                <form action="/create" method="POST">
 
-                <label for="powers">Powers:</label>
-                <input type="text" id="powers" name="powers">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
 
-                <label for="description">Description:</label>
-                <input type="text" id="description" name="description">
+                    <label for="alias">Alias:</label>
+                    <input type="text" id="alias" name="alias">
 
-                <label for="image">Image link:</label>
-                <input type="url" id="image" name="image">
+                    <label for="powers">Powers:</label>
+                    <input type="text" id="powers" name="powers">
 
-                <button id="btnSend" type="submit">Submit now</button>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description">
+
+                    <label for="image">Image link:</label>
+                    <input type="url" id="image" name="image">
+
+                    <button id="btnSend" type="submit">Submit now</button>
+                
+                </form>
+                <% } else { %>
+
+                <h2>Update the super hero</h2>
+
+                <form action="/update/<%= character.id %>" method="POST">
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="<%= character.name %>">
+
+                    <label for="alias">Alias:</label>
+                    <input type="text" id="alias" name="alias" value="<%= character.alias %>">
+
+                    <label for="powers">Powers:</label>
+                    <input type="text" id="powers" name="powers" value="<%= character.powers %>">
+
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" value="<%= character.description %>">
+
+                    <label for="image">Image link:</label>
+                    <input type="url" id="image" name="image" value="<%= character.image %>">
+
+                    <button id="btnUpdate" type="submit">Update now</button>
+                
+                </form>
+                <% } %>
+            </div>
             
-            </form>
+        </section>
 
+        <section id="cards">
 
+            <h2>Who's who in DC Universe?</h2>
+
+            <% characters.forEach((character) => { %>
+                <div class="card">
+                    <p><%= character.id %></p>
+                    <img src="<%= character.image %>" alt="">
+                    <h3><%= character.name %></h3>
+                    <p class="alias"><%= character.alias %></p>
+                    <p><%= character.powers %></p>
+                    <p class="description"><%= character.description %></p>
+                    <a href="/details/<%= character.id %>">Edit</a>
+                </div>
+            <% }) %>
+        
         </section>
 
     </main>

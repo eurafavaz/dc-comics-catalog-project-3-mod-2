@@ -42,15 +42,31 @@ const characters = [
   },
 ];
 
+let character = undefined;
+
 app.get("/", (req, res) => {
-  res.render("index", { characters });
+  res.render("index", { characters, character });
 });
 
-app.post("/add", (req, res) => {
+app.post("/create", (req, res) => {
   const character = req.body;
-
+  character.id = characters.lenght + 1;
   characters.push(character);
+  res.redirect("/");
+});
 
+app.get("/details/:id", (req, res) => {
+  const id = +req.params.id;
+  character = characters.find((character) => character.id === id);
+  res.redirect("/");
+});
+
+app.post("/update/:id", (req, res) => {
+  const id = +req.params.id - 1;
+  const newCharacter = req.body;
+  newCharacter.id = id + 1;
+  characters[id] = newCharacter;
+  character = undefined;
   res.redirect("/");
 });
 
